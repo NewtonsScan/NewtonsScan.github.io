@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+
+        <!-- Responsive -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+        <title>Timely</title>
+
+        <link rel="manifest" href="timely.json"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+
+    <body>
+        <h1 style="color: forestgreen;">Timetable</h1>
+
+        <form>
+            <fieldset>
+                <legend>Set up your Stages here</legend>
+                <p>
+                    <label for="event-name">Event Name</label>
+                    <input type="text" id="event-name"/>
+
+                    <label for="start-date">Event Start</label>
+                    <input type="date" id="start-date" required/>
+                </p>
+            </fieldset>
+        </form>
+        <p>
+            <button type="submit">Add Event</button>
+        </p>
+
+        <section id="past-events"></section>
+
+        <script src="app.js" defer></script>
+
+        <script>
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("sw.js").then(
+                    (registration) => {console.log("Service worker registration successful", registration);},
+                    (error) => {console.error(`Service worker registration failed: ${error}`);},
+                );
+            } else {
+                console.error("Service workers are not supported.");
+            }
+        </script>
+
+    </body>
+
+</html>
